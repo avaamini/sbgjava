@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.*;
@@ -95,7 +96,7 @@ public class SBG {
 	public HttpResponse generateRequest() throws Exception{
 		
 		String URL = this.getRequestURL();
-		List<NameValuePair> queryParamsNVPair = null;
+		// List<NameValuePair> queryParamsNVPair = null;
 		HttpRequestBase request = null; 
 		
 		switch (method){
@@ -137,10 +138,12 @@ public class SBG {
 				break;
 		}
 		
-		if (queryParamsNVPair != null){
+		if (queryParams != null){
 			URIBuilder getUriBuilder = new URIBuilder(request.getURI());
-			for (NameValuePair paramPair : queryParamsNVPair){
-				getUriBuilder.addParameter(paramPair.getName(), paramPair.getValue());
+			Iterator paramKeys = queryParams.keys();
+			while (paramKeys.hasNext()){
+				String param = (String) paramKeys.next();
+				getUriBuilder.addParameter(param, queryParams.getString(param));
 			} 
 			URI getUri = getUriBuilder.build();
 			((HttpRequestBase) request).setURI(getUri);

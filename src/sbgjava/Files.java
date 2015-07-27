@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 
 /**
- * Class representing API requests relating to managing project files on the Seven Bridges Platform. Constructed by supplying a user's authentication token. 
+ * Class for making API requests relating to managing project files on the Seven Bridges Platform. Constructed by supplying a user's authentication token. 
  * 
  * @author avasoleimany
  *
@@ -100,17 +100,16 @@ public class Files {
 	 * 
 	 * @author avasoleimany
 	 */
-	public JSONObject updateMetadata(String projectID, String fileID, String newFileName, HashMap<String, String> metadataFields) throws Exception{
-		if (projectID == null || fileID == null || (metadataFields.isEmpty() && (newFileName == null || newFileName == ""))){
+	public JSONObject updateMetadata(String projectID, String fileID, String newFileName, JSONObject metadataFields) throws Exception{
+		if (projectID == null || fileID == null || (metadataFields == null && (newFileName == null || newFileName == ""))){
 			throw new Exception("Project ID and file ID must both be non null and must supply at least one metadata field to update.");
 		}
 		JSONObject updateMetadataBodyParams = new JSONObject();
-		JSONObject metadataFieldsAsJSON = new JSONObject(metadataFields);
 		// user wants to update file name
 		if (newFileName != null && newFileName != ""){
 			updateMetadataBodyParams.put("name", newFileName);
 		}
-		updateMetadataBodyParams.put("metadata", metadataFieldsAsJSON);
+		updateMetadataBodyParams.put("metadata", metadataFields);
 		SBG updateMetadataRequest = new SBG(authToken, "project/" + projectID + "/file/" + fileID, "POST", null, updateMetadataBodyParams);
 		return updateMetadataRequest.checkAndRetrieveResponse(updateMetadataRequest.generateRequest());
 	}

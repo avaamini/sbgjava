@@ -3,7 +3,8 @@ package sbgjava;
 import org.json.JSONObject;
 
 /**
- * Class representing API requests related to managing pipelines on the Seven Bridges Platform. Constructed by supplying a user's authentication token. 
+ * Class for making API requests related to managing pipelines on the Seven Bridges Platform. Constructed by supplying a user's authentication token. 
+ * 
  * @author avasoleimany
  *
  */
