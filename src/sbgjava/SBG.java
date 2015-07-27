@@ -163,7 +163,7 @@ public class SBG {
 		
 		int requestStatusCode = requestResult.getStatusLine().getStatusCode();
 		
-		if (requestStatusCode > 204){
+		if (requestStatusCode != 200 || requestStatusCode != 201 || requestStatusCode != 204){
 			throw new Exception("Server responded with status code: " + Integer.toString(requestStatusCode) + " . " + requestResult.getStatusLine().getReasonPhrase());
 		}
 		
