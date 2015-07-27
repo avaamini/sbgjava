@@ -32,7 +32,7 @@ public class SBG {
 	private final String baseURL = "https://api.sbgenomics.com/" ;
 	private String requestURL;
 	private final String authToken;
-	private final String version;
+	private String version = "1.1";
 	private String path;
 	private final String method;
 	private JSONObject queryParams = null;
@@ -50,9 +50,8 @@ public class SBG {
 	 * @param queryParams
 	 * @param bodyParams
 	 */
-	public SBG(String authToken, String version, String path, String method, JSONObject queryParams, JSONObject bodyParams){
+	public SBG(String authToken, String path, String method, JSONObject queryParams, JSONObject bodyParams){
 		this.authToken = authToken;
-		this.version = version;
 		this.path = path;
 		this.method = method;
 		this.queryParams = queryParams;
@@ -70,16 +69,33 @@ public class SBG {
 	}
 	
 	/**
+	 * Update the version attribute of the SBG API representation. 
+	 * 
+	 * @param newVersion
+	 */
+	public void setVersion(String newVersion){
+		this.version = newVersion;
+	}
+	
+	/**
+	 * Retrieve the URL of the request associated with this instance of an SBG API call. 
+	 * 
+	 * @return URL of request
+	 */
+	public String getRequestURL(){
+		return requestURL;
+	}
+	
+	/**
 	 * Generate and make the necessary HTTP request. 
 	 * 
-	 * @param URL
-	 * @param queryParamsNVPair
-	 * @param bodyParams
 	 * @return
 	 * @throws Exception
 	 */
-	public HttpResponse generateRequest(String URL, List<NameValuePair> queryParamsNVPair, JSONObject bodyParams) throws Exception{
+	public HttpResponse generateRequest() throws Exception{
 		
+		String URL = this.getRequestURL();
+		List<NameValuePair> queryParamsNVPair = null;
 		HttpRequestBase request = null; 
 		
 		switch (method){
@@ -147,7 +163,7 @@ public class SBG {
 		
 		int requestStatusCode = requestResult.getStatusLine().getStatusCode();
 		
-		if (requestStatusCode / 100 != 2){
+		if (requestStatusCode > 204){
 			throw new Exception("Server responded with status code: " + Integer.toString(requestStatusCode) + " . " + requestResult.getStatusLine().getReasonPhrase());
 		}
 		
