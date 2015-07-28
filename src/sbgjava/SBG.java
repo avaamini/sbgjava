@@ -165,12 +165,16 @@ public class SBG {
 	public JSONObject checkAndRetrieveResponse(HttpResponse requestResult) throws Exception {
 		
 		int requestStatusCode = requestResult.getStatusLine().getStatusCode();
-		
-		if (requestStatusCode != 200 || requestStatusCode != 201 || requestStatusCode != 204){
+		if (requestStatusCode != 200 && requestStatusCode != 201 && requestStatusCode != 204){
 			throw new Exception("Server responded with status code: " + Integer.toString(requestStatusCode) + " . " + requestResult.getStatusLine().getReasonPhrase());
 		}
 		
 		else {
+			if (method == "DELETE"){
+				JSONObject successfulDeleteAsJSON = new JSONObject();
+				successfulDeleteAsJSON.put("Successful delete call.", requestStatusCode);
+				return successfulDeleteAsJSON;
+			}
 			String JSONString = EntityUtils.toString(requestResult.getEntity());
 			JSONObject responseJSON = new JSONObject(JSONString);
 			return responseJSON;
