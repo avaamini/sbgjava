@@ -140,7 +140,7 @@ public class SBG {
 		
 		if (queryParams != null){
 			URIBuilder getUriBuilder = new URIBuilder(request.getURI());
-			Iterator paramKeys = queryParams.keys();
+			Iterator<?> paramKeys = queryParams.keys();
 			while (paramKeys.hasNext()){
 				String param = (String) paramKeys.next();
 				getUriBuilder.addParameter(param, queryParams.getString(param));
@@ -176,6 +176,7 @@ public class SBG {
 			return responseJSON;
 		}
 	}
+	
 	
 	
 	
