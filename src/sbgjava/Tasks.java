@@ -67,8 +67,8 @@ public class Tasks {
 		if (inputs == null || parameters == null){
 			throw new Exception("Inputs and parameters must be specified.");
 		}
+		
 		JSONObject executeTaskBodyParams = new JSONObject();
-		executeTaskBodyParams.put("project_id", projectID);
 		executeTaskBodyParams.put("pipeline_id", pipelineID);
 		if (pipelineRevision != null && pipelineRevision != ""){
 			executeTaskBodyParams.put("pipeline_revision", pipelineRevision);
@@ -81,7 +81,7 @@ public class Tasks {
 		}
 		executeTaskBodyParams.put("inputs", inputs);
 		executeTaskBodyParams.put("parameters", parameters);
-		
+
 		SBG executeTaskRequest = new SBG(authToken, "project/" + projectID + "/task", "POST", null, executeTaskBodyParams);
 		return executeTaskRequest.checkAndRetrieveResponse(executeTaskRequest.generateRequest());
 	}

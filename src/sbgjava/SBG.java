@@ -176,9 +176,9 @@ public class SBG {
 		}
 		
 		else {
-			if (method == "DELETE" || method == "PUT" || method == "POST"){
-				JSONObject successfulOperation = new JSONObject();
-				successfulOperation.put("Operation finished successfully.", requestStatusCode);
+			JSONObject successfulOperation = new JSONObject();
+			successfulOperation.put("Operation finished successfully.", requestStatusCode);
+			if (requestResult.getEntity() == null){
 				return successfulOperation;
 			} 
 			String JSONString = EntityUtils.toString(requestResult.getEntity());

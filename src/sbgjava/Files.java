@@ -91,6 +91,7 @@ public class Files {
 	 * Make a PUT call to update the metadata of a given file, as specified by:
 	 * 		https://docs.sbgenomics.com/display/developerhub/API%3A+Files#API:Files-Updatefilemetadata:PUT/project/:project_id/file/:file_id
 	 * NB: This call does not work, at the moment, for non-null metadataFields. Can only update the name of a file at this point. 
+	 * 
 	 * @param projectID: ID of the project to access. must be non-null and non-empty
 	 * @param fileID: ID of the file to access. must be non-null and non-empty
 	 * @param newFileName: new file name for the given file, if applicable. otherwise, passed in as null or ""

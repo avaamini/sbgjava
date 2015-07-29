@@ -73,8 +73,8 @@ public class Pipelines {
 	 * Make a GET call to return information about a particular pipeline, as specified by:
 	 * 		https://docs.sbgenomics.com/display/developerhub/API%3A+Pipelines#API:Pipelines-Getpipelinedetails:GET/project/:project_id/pipeline/:pipeline_id
 	 * 
-	 * @param projectID: ID of the project to access. must be non-null and non-empty. 
-	 * @param pipelineID: ID of the pipeline to access. must be non-null and non-empty
+	 * @param projectID: ID of the project to access. the pipeline specified by pipelineID must be contained within the project specified by projectID. must be non-null and non-empty. 
+	 * @param pipelineID: ID of the pipeline to access. must be contained within the project specified by projectID. must be non-null and non-empty
 	 * @return HTTP response of the request
 	 * @throws Exception
 	 * 
