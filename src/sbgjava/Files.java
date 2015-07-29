@@ -88,13 +88,13 @@ public class Files {
 	}
 	
 	/**
-	 * Make a POST call to update the metadata of a given file, as specified by:
+	 * Make a PUT call to update the metadata of a given file, as specified by:
 	 * 		https://docs.sbgenomics.com/display/developerhub/API%3A+Files#API:Files-Updatefilemetadata:PUT/project/:project_id/file/:file_id
-	 * 
+	 * NB: This call does not work, at the moment, for non-null metadataFields. Can only update the name of a file at this point. 
 	 * @param projectID: ID of the project to access. must be non-null and non-empty
 	 * @param fileID: ID of the file to access. must be non-null and non-empty
 	 * @param newFileName: new file name for the given file, if applicable. otherwise, passed in as null or ""
-	 * @param metadataFields: specifies metadata to be updated, with the mapping metadata_field --> new value
+	 * @param metadataFields: specifies metadata to be updated, with the mapping metadata_field --> new value. null if no metadata fields are to be updated. 
 	 * @return response of the HTTP request
 	 * @throws Exception
 	 * 
@@ -109,8 +109,11 @@ public class Files {
 		if (newFileName != null && newFileName != ""){
 			updateMetadataBodyParams.put("name", newFileName);
 		}
-		updateMetadataBodyParams.put("metadata", metadataFields);
-		SBG updateMetadataRequest = new SBG(authToken, "project/" + projectID + "/file/" + fileID, "POST", null, updateMetadataBodyParams);
+		if (metadataFields != null ){
+			updateMetadataBodyParams.put("metadata", metadataFields);
+		}
+		System.out.println(updateMetadataBodyParams.toString());
+		SBG updateMetadataRequest = new SBG(authToken, "project/" + projectID + "/file/" + fileID, "PUT", null, updateMetadataBodyParams);
 		return updateMetadataRequest.checkAndRetrieveResponse(updateMetadataRequest.generateRequest());
 	}
 	

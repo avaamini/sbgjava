@@ -14,7 +14,8 @@ import org.junit.Test;
 public class ProjectsTest {
 	
 	private final String authToken = "4ca73bbbacc443dd99b54e84e0833d0d";
-	private String testProjectID = "5221b991-87cd-442d-bf05-40cb4ead9f7f";
+	private String testProjectID = "5221b991-87cd-442d-bf05-40cb4ead9f7f"; // API tutorial, not a developer project. 
+	private String testProjectDeveloper = "ed08e793-4fd7-40b3-883d-08135cb2fafd"; // miRNA test, developer project. 
 	
 	Projects projectsTest = new Projects(authToken);
 	

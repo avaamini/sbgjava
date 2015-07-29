@@ -17,6 +17,7 @@ import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
@@ -113,6 +114,7 @@ public class SBG {
 				}
 				if (bodyParams != null){
 					StringEntity requestBodySE = new StringEntity(bodyParams.toString());
+					requestBodySE.setContentType("application/json");
 					postRequest.setEntity(requestBodySE);
 				}
 				request = postRequest;
@@ -123,10 +125,14 @@ public class SBG {
 					putRequest.addHeader(headerKey, headers.get(headerKey));
 				}
 				if (bodyParams != null){
+					System.out.println(bodyParams.toString());
 					StringEntity requestBodySE = new StringEntity(bodyParams.toString());
+					requestBodySE.setContentType("application/json");
 					putRequest.setEntity(requestBodySE);
+					System.out.println(putRequest.getEntity().toString());
 				}
 				request = putRequest;
+				System.out.println(request.getURI().toString());
 				break;
 			case "DELETE":
 				request = new HttpDelete(URL);
@@ -170,11 +176,11 @@ public class SBG {
 		}
 		
 		else {
-			if (method == "DELETE"){
-				JSONObject successfulDeleteAsJSON = new JSONObject();
-				successfulDeleteAsJSON.put("Successful delete call.", requestStatusCode);
-				return successfulDeleteAsJSON;
-			}
+			if (method == "DELETE" || method == "PUT" || method == "POST"){
+				JSONObject successfulOperation = new JSONObject();
+				successfulOperation.put("Operation finished successfully.", requestStatusCode);
+				return successfulOperation;
+			} 
 			String JSONString = EntityUtils.toString(requestResult.getEntity());
 			JSONObject responseJSON = new JSONObject(JSONString);
 			return responseJSON;
