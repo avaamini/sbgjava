@@ -2,7 +2,7 @@
 
 To make file-related requests to the [Seven Bridges Genomics API](https://docs.sbgenomics.com/display/developerhub/API%3A+Files), construct an instance of the `Files` class using your authentication token. 
 
-```
+```java
 String authToken = "58aeb140-1970-0130-6386-001f5b34aa78";
 Files filesRequests = new Files(authToken);
 ```
@@ -12,14 +12,14 @@ Use this call to return a list of the files in a given project.
 
 <h4> Example Request
 
-```
+```java
 String projectID = "130d3136-eb47-4bea-98e4-96225a89f647";
 filesRequests.getFileList(projectID);
 ```
 
 <h4> Example Response
 
-```
+```java
 {
   "items": [
     {
@@ -52,7 +52,7 @@ Use this call to obtain detailed information about a given file in a given proje
 
 <h4> Example Request
 
-```
+```java
 String projectID = "130d3136-eb47-4bea-98e4-96225a89f647";
 String fileID = "550c0bbee4b05f167ed28852";
 filesRequest.getFileInfo(projectID, fileID)
@@ -60,7 +60,7 @@ filesRequest.getFileInfo(projectID, fileID)
 
 <h4> Example Response
 
-```
+```java
 {  
     "id": "550c0bbee4b05f167ed28852",  
     "name": "c.elegans_chr2_test.fastq",  
