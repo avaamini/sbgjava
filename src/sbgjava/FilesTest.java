@@ -20,9 +20,9 @@ public class FilesTest {
 	private final String authToken = "4ca73bbbacc443dd99b54e84e0833d0d";
 	private String testProjectID = "5221b991-87cd-442d-bf05-40cb4ead9f7f"; // API tutorial, not a developer project. 
 	private String testProjectDeveloper = "ed08e793-4fd7-40b3-883d-08135cb2fafd"; // miRNA test, developer project. 
-	private String testFileIDTemp = "55b7daf6e4b09f18a3f043f5"; // will need to replace after testing delete on this file. 
+	private String testFileIDTemp = "559d65a3e4b0566fd15a96f7"; // will need to replace after testing delete on this file. 
 	private String testFileToCopy = "55b8e1bae4b09f18a3f0fa2a"; // to copy to API tutorial
-	private String testFileForMetadata = "55b8e776e4b09f18a3f0fc57"; // to update metadata. actually a GTF file. 
+	private String testFileForMetadata = "55b8e7d4e4b09f18a3f0fc5e"; // to update metadata. 
 	
 	Files filesTest = new Files(authToken);
 

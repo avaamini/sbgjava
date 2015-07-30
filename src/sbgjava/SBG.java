@@ -2,8 +2,11 @@ package sbgjava;
 
 import java.util.HashMap;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 import org.json.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
@@ -92,9 +96,12 @@ public class SBG {
 	 * Generate and make the necessary HTTP request. 
 	 * 
 	 * @return
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 * @throws URISyntaxException 
 	 * @throws Exception
 	 */
-	public HttpResponse generateRequest() throws Exception{
+	public HttpResponse generateRequest() throws ClientProtocolException, IOException, URISyntaxException {
 		
 		String URL = this.getRequestURL();
 		// List<NameValuePair> queryParamsNVPair = null;
@@ -125,11 +132,9 @@ public class SBG {
 					putRequest.addHeader(headerKey, headers.get(headerKey));
 				}
 				if (bodyParams != null){
-					System.out.println(bodyParams.toString());
 					StringEntity requestBodySE = new StringEntity(bodyParams.toString());
 					requestBodySE.setContentType("application/json");
 					putRequest.setEntity(requestBodySE);
-					System.out.println(putRequest.getEntity().toString());
 				}
 				request = putRequest;
 				System.out.println(request.getURI().toString());
@@ -149,7 +154,11 @@ public class SBG {
 			Iterator<?> paramKeys = queryParams.keys();
 			while (paramKeys.hasNext()){
 				String param = (String) paramKeys.next();
-				getUriBuilder.addParameter(param, queryParams.getString(param));
+				try {
+					getUriBuilder.addParameter(param, queryParams.getString(param));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 			} 
 			URI getUri = getUriBuilder.build();
 			((HttpRequestBase) request).setURI(getUri);
@@ -168,10 +177,13 @@ public class SBG {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject checkAndRetrieveResponse(HttpResponse requestResult) throws Exception {
+	public JSONObject checkAndRetrieveResponse(HttpResponse requestResult) throws Exception{
 		
 		int requestStatusCode = requestResult.getStatusLine().getStatusCode();
 		if (requestStatusCode != 200 && requestStatusCode != 201 && requestStatusCode != 204){
+			JSONObject unsuccessfulOperation = new JSONObject();
+		//	unsuccessfulOperation.put("OServer responded with status code: " + Integer.toString(requestStatusCode) + " . " + requestResult.getStatusLine().getReasonPhrase(), requestStatusCode);
+		//	return unsuccessfulOperation;
 			throw new Exception("Server responded with status code: " + Integer.toString(requestStatusCode) + " . " + requestResult.getStatusLine().getReasonPhrase());
 		}
 		

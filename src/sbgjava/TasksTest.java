@@ -18,7 +18,7 @@ public class TasksTest {
 	private String testProjectID = "5221b991-87cd-442d-bf05-40cb4ead9f7f"; // API tutorial, not a developer project. 
 	private String testTaskID = "e5f3e9e5-b92a-440c-b404-a6d7f300c63e";
 	private String testProjectDeveloper = "9ace096e-9d22-428d-8302-c536b22c9192"; // Samtools test, developer project. 
-	private String testPipelineID = "559d56d9896a5d236e19d4da"; // whole exome pipeline
+	private String testPipelineID = "559d56d9896a5d236e19d4da"; // FastQC pipeline
 	private String taskToAbort = "1eac7092-df01-48ca-97b9-79ff5370e1f1"; // task initiated in the test suite. 
 	
 	Tasks tasksTest = new Tasks(authToken);
