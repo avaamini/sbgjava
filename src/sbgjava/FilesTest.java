@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +23,8 @@ public class FilesTest {
 	private String testProjectDeveloper = "ed08e793-4fd7-40b3-883d-08135cb2fafd"; // miRNA test, developer project. 
 	private String testFileIDTemp = "559d65a3e4b0566fd15a96f7"; // will need to replace after testing delete on this file. 
 	private String testFileToCopy = "55b8e1bae4b09f18a3f0fa2a"; // to copy to API tutorial
-	private String testFileForMetadata = "55b8e7d4e4b09f18a3f0fc5e"; // to update metadata. 
+	private String testFileForMetadata = "55bb779ee4b09f18a3f3e340"; // to update metadata. 
+	private String testProjectNew = "e8b4e2db-8620-4bda-aac8-18be0e9a92cf";
 	
 	Files filesTest = new Files(authToken);
 
@@ -32,7 +34,7 @@ public class FilesTest {
 	@Test
 	public void getFileListTest() {
 		try{
-			JSONObject getFileList = filesTest.getFileList(testProjectID);
+			JSONObject getFileList = filesTest.getFileList(testProjectNew);
 			System.out.println(getFileList.toString());
 		} catch (Exception e){
 			e.printStackTrace();
@@ -88,7 +90,7 @@ public class FilesTest {
 	@Test
 	public void deleteFileTest(){
 		try{
-			JSONObject deleteFile = filesTest.deleteFile(testProjectID, testFileIDTemp);
+			JSONObject deleteFile = filesTest.deleteFile(testProjectID, testFileForMetadata);
 			System.out.println(deleteFile.toString());
 		} catch (Exception e){
 			e.printStackTrace();
@@ -103,7 +105,7 @@ public class FilesTest {
 	public void copyFilesTest(){
 		try{
 			ArrayList<String> fileToCopy = new ArrayList<String>(Arrays.asList(testFileToCopy));
-			JSONObject copyFile = filesTest.copyFiles(testProjectID, fileToCopy);
+			JSONObject copyFile = filesTest.copyFiles(testProjectNew, fileToCopy);
 			System.out.println(copyFile.toString());
 		} catch (Exception e){
 			e.printStackTrace();
@@ -118,12 +120,30 @@ public class FilesTest {
 	public void updateMetadataTest(){
 		try{
 			JSONObject updateMetadataParams = new JSONObject();
+			updateMetadataParams.put("sample", "sample");
 			updateMetadataParams.put("file_type", "fastq");
-			updateMetadataParams.put("sample", "some sample id");
 			updateMetadataParams.put("paired_end", "1");
 			updateMetadataParams.put("qual_scale", "illumina13");
 			updateMetadataParams.put("seq_tech", "Illumina");
-			JSONObject updateMetadata = filesTest.updateMetadata(testProjectID, testFileForMetadata, "updated metadata", null);
+
+			updateMetadataParams.put("library", "illumina");
+
+			System.out.println(updateMetadataParams.toString());
+			JSONObject updateMetadata = filesTest.updateMetadata(testProjectNew, testFileForMetadata, "please work", updateMetadataParams);
+			System.out.println(updateMetadata.toString());
+		} catch (Exception e){
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	/**
+	 * Test the updateMetadata call where metadata fields are passed in as individual parameters. 
+	 */
+	@Test 
+	public void updateMetadataParamsTest(){
+		try{
+			JSONObject updateMetadata = filesTest.updateMetadata(testProjectNew, testFileForMetadata, "test", "fastq", "illumina13", "Illumina", "sample", "Illumina", "", "2");
 			System.out.println(updateMetadata.toString());
 		} catch (Exception e){
 			e.printStackTrace();

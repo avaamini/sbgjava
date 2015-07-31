@@ -10,13 +10,13 @@ Billing billingRequests = new Billing(authToken);
 
 Use this call to return a list of the IDs of all the billing groups you have access to. The response is formatted as a JSONObject. 
 
-<h4> Example Request
+<h6> Example Request
 
 ```java
 billingRequests.getBillingInfo();
 ```
 
-<h4> Example Response
+<h6> Example Response
 
 ```java
 {

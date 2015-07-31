@@ -18,6 +18,7 @@ public class ProjectsTest {
 	private String testProjectDeveloper = "ed08e793-4fd7-40b3-883d-08135cb2fafd"; // miRNA test, developer project. 
 	private String billingGroupID = "3a569134-13c1-4620-a971-b6d9f81b316c";
 	private String createdProjectID = "7f15c0f0-5a56-4ab7-a5a0-9481cc2e2ded"; // created during the createProject test in the test suite
+	private String testProjectNew = "e8b4e2db-8620-4bda-aac8-18be0e9a92cf";
 	
 	Projects projectsTest = new Projects(authToken);
 	
@@ -97,7 +98,7 @@ public class ProjectsTest {
 	@Test
 	public void addProjectMemberTest(){
 		try{
-			JSONObject addProjectMember = projectsTest.addProjectMember(createdProjectID, "rfranklin", false, false, false, false);
+			JSONObject addProjectMember = projectsTest.addProjectMember(testProjectNew, "rfranklin", false, false, false, false);
 			System.out.println(addProjectMember.toString());
 		} catch (Exception e){
 			e.printStackTrace();
@@ -111,7 +112,7 @@ public class ProjectsTest {
 	@Test
 	public void editMemberDetailsTest(){
 		try{
-			JSONObject editMemberDetails = projectsTest.editMemberDetails(createdProjectID, "rfranklin", true, true, false, false);
+			JSONObject editMemberDetails = projectsTest.editMemberDetails(testProjectNew, "rfranklin", true, true, false, false);
 			System.out.println(editMemberDetails.toString());
 		} catch (Exception e){
 			e.printStackTrace();
@@ -125,7 +126,7 @@ public class ProjectsTest {
 	@Test
 	public void deleteProjectMemberTest(){
 		try{
-			JSONObject deleteProjectMember = projectsTest.deleteProjectMember(createdProjectID, "rfranklin");
+			JSONObject deleteProjectMember = projectsTest.deleteProjectMember(testProjectNew, "rfranklin");
 			System.out.println(deleteProjectMember.toString());
 		} catch (Exception e){
 			e.printStackTrace();

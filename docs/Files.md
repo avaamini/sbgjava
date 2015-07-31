@@ -10,14 +10,14 @@ Files filesRequests = new Files(authToken);
 
 Use this call to return a list of the files in a given project. 
 
-<h4> Example Request
+<h6> Example Request
 
 ```java
 String projectID = "130d3136-eb47-4bea-98e4-96225a89f647";
 filesRequests.getFileList(projectID);
 ```
 
-<h4> Example Response
+<h6> Example Response
 
 ```java
 {
@@ -50,7 +50,7 @@ filesRequests.getFileList(projectID);
 
 Use this call to obtain detailed information about a given file in a given project. The fileID for a file may be obtained using the getFileList(String projectID) call.
 
-<h4> Example Request
+<h6> Example Request
 
 ```java
 String projectID = "130d3136-eb47-4bea-98e4-96225a89f647";
@@ -58,7 +58,7 @@ String fileID = "550c0bbee4b05f167ed28852";
 filesRequest.getFileInfo(projectID, fileID)
 ```
 
-<h4> Example Response
+<h6> Example Response
 
 ```java
 {  

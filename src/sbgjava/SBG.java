@@ -133,8 +133,10 @@ public class SBG {
 				}
 				if (bodyParams != null){
 					StringEntity requestBodySE = new StringEntity(bodyParams.toString());
-					requestBodySE.setContentType("application/json");
+					System.out.println(requestBodySE.toString());
+					requestBodySE.setContentEncoding("application/json");
 					putRequest.setEntity(requestBodySE);
+
 				}
 				request = putRequest;
 				System.out.println(request.getURI().toString());
