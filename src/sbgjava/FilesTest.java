@@ -90,7 +90,7 @@ public class FilesTest {
 	@Test
 	public void deleteFileTest(){
 		try{
-			JSONObject deleteFile = filesTest.deleteFile(testProjectID, testFileForMetadata);
+			JSONObject deleteFile = filesTest.deleteFile(testProjectNew, testFileForMetadata);
 			System.out.println(deleteFile.toString());
 		} catch (Exception e){
 			e.printStackTrace();

@@ -212,7 +212,7 @@ public class Files {
 	 * 
 	 * @param projectID
 	 * @param fileID
-	 * @return
+	 * @return response of the HTTP request. 
 	 * @throws Exception
 	 * 
 	 * @author avasoleimany
