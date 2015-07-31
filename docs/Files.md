@@ -1,4 +1,4 @@
-# sbgjava API Client: Files
+# Files
 
 To make file-related requests to the [Seven Bridges Genomics API](https://docs.sbgenomics.com/display/developerhub/API%3A+Files), construct an instance of the `Files` class using your authentication token. 
 

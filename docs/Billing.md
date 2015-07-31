@@ -1,4 +1,4 @@
-# sbgjava API Client: Billing
+# Billing
 
 To make billing-related requests to the [Seven Bridges Genomics API](https://docs.sbgenomics.com/display/developerhub/API%3A+Billing), construct an instance of the `Billing` class using your authentication token. 
 ```java

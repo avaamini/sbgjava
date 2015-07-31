@@ -1,4 +1,4 @@
-# sbgjava API Client: Pipelines
+# Pipelines
 
 To manage pipelines using the [Seven Bridges Genomics API](https://docs.sbgenomics.com/display/developerhub/API%3A+Pipelines), construct an instance of the `Pipelines` class using your authentication token. 
 ```java
