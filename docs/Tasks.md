@@ -324,6 +324,6 @@ taskRequests.taskAction(projectID, taskID, action);
 <h6> Example Response </h6> 
 
 ```java
-{"Operation finished successfully.":204}
+{"Operation finished successfully.":204};
 ```
 
