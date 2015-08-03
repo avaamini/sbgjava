@@ -1,0 +1,12 @@
+[submodule "lib/sbgjava"]
+	path = lib/sbgjava
+	url = git://git.apache.org/httpclient.git
+[submodule "lib/httpclient"]
+	path = lib/httpclient
+	url = git://git.apache.org/httpclient.git
+[submodule "lib/httpcore"]
+	path = lib/httpcore
+	url = git://git.apache.org/httpcore.git
+[submodule "lib/json"]
+	path = lib/json
+	url = https://github.com/douglascrockford/JSON-java.git
