@@ -1,10 +1,12 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Tasks;
 
 /**
  * JUnit Test Suite to test Tasks API calls. 

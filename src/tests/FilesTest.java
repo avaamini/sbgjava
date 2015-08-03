@@ -1,4 +1,4 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,8 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Files;
 
 /**
  * JUnit Test Suite to test Files API calls. 

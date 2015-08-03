@@ -1,9 +1,11 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Upload;
 
 /**
  * JUnit test suite to test Upload API calls. 

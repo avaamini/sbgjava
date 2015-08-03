@@ -1,9 +1,11 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Pipelines;
 
 /**
  * JUnit Test Suite to test Pipelines API calls. 

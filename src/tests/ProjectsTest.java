@@ -1,9 +1,11 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Projects;
 
 /**
  * JUnit Test Suite to test Projects API calls. 

@@ -1,9 +1,11 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Billing;
 
 /**
  * JUnit Test Suite to test Billing API calls. 

@@ -1,4 +1,4 @@
-package sbgjava;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import sbgjava.Billing;
+import sbgjava.Files;
+import sbgjava.Pipelines;
+import sbgjava.Projects;
+import sbgjava.Tasks;
+import sbgjava.Upload;
 
 public class SampleUsage {
 	
