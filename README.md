@@ -16,8 +16,6 @@ To use `sbgjava`, you can download the source code directly from the GitHub dire
 
 Guides to using `sbgjava` are located in the `docs` directory. Here you will find information on all the API calls currently available on the Seven Bridges Platform. 
 
-Additionally, the Quickstart will take you through how to run the [FastQC Analysis](https://igor.sbgenomics.com/public/pipelines/534520eed79f0049c0c9443a/) pipeline using the `sbgjava` library, as outlined in the [API Quickstart](https://docs.sbgenomics.com/display/developerhub/Quickstart) on the Seven Bridges Genomics Developer Hub. 
-
 ## Authors and Copyright
 
 `sbgjava` was developed by Ava Soleimany. © Seven Bridges Genomics 2015.
