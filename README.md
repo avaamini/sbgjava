@@ -16,9 +16,9 @@ To use `sbgjava`, you can download the source code directly from the GitHub dire
 
 Guides to using `sbgjava` are located in the `docs` directory. Here you will find information on all the API calls currently available on the Seven Bridges Platform. 
 
-## Authors and Copyright
+## Authors
 
-`sbgjava` was developed by Ava Soleimany. © Seven Bridges Genomics 2015.
+`sbgjava` was developed by Ava Soleimany.
 
 
  
