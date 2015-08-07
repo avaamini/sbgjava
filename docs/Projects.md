@@ -93,6 +93,7 @@ Use this call to return information about each member of a specific project. Res
 
 ```java 
 String projectID = "7f7a72d0-da77-4f51-9416-99f14f7316ab";
+projectsRequests.getProjectMembers(projectID);
 ```
 
 <h6> Example Response </h6> 
