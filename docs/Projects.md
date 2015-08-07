@@ -235,6 +235,7 @@ Use this call to remove a particular member from a specified project. Response i
 ```java
 String projectID = "7f7a72d0-da77-4f51-9416-99f14f7316ab";
 String userID = "08890148-6d9e-4a10-b284-924228d3f99a";
+projectsRequests.deleteProjectMember(projectID, userID);
 ```
 
 <h6> Example Response </h6> 
