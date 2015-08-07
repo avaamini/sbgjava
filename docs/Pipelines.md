@@ -303,6 +303,7 @@ String destinationProject = "8e885662-c891-4227-bdb5-d87a90f3f461";
 String pipelineID = "53452130d79f0049c0c94441";
 String revision = "";
 String sourceProject = "130d3136-eb47-4bea-98e4-96225a89f647";
+pipelineRequests.addPipeline(destinationProject, pipelineID, revision, sourceProject);
 ```
 
 <h6> Example Response </h6> 
